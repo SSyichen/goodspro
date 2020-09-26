@@ -1,0 +1,18 @@
+#mybatisµƒœ‡πÿ≈‰÷√
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.luka.goodspro.bean
+  configuration:
+    map-underscore-to-camel-case: true
+spring:
+  application:
+    name: goods
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shopxo?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: ssyichen
+server:
+  port: 8080
+logging:
+  level: info
