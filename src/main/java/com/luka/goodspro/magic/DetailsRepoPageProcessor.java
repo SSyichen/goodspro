@@ -5,6 +5,7 @@ import com.luka.goodspro.pipeline.GoodsModelPipeline;
 import org.springframework.util.StringUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.processor.PageProcessor;
 
@@ -28,9 +29,14 @@ public class DetailsRepoPageProcessor implements PageProcessor {
 
         List<String> urls = page.getHtml().regex("http://www.bzjw.com/supply/SupplyDetail_\\d*_\\d*.cfml").all();
         Set<String> urlsSet = new HashSet<>(urls);
-        OOSpider.create(Site.me().setRetryTimes(3).setSleepTime(1000).setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36")
-                , new GoodsModelPipeline(), Goods.class)
-                .addUrl(urlsSet.toArray(new String[urlsSet.size()])).thread(8).run();
+
+        Spider.create(new GoodsRepoPageProcessor())
+                //从"http://www.bzjw.com/supply/11"开始抓
+                .addUrl(urlsSet.toArray(new String[urlsSet.size()]))
+                //开启5个线程抓取
+                .thread(8)
+                //启动爬虫
+                .run();
 
         page.addTargetRequest(nextUrl);
     }

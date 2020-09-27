@@ -1,15 +1,12 @@
 package com.luka.goodspro.bean;
 
-import com.luka.goodspro.pipeline.GoodsModelPipeline;
 import lombok.Data;
-import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.Formatter;
 import us.codecraft.webmagic.model.annotation.HelpUrl;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @TargetUrl("http://www.bzjw.com/supply/SupplyDetail_\\d*_\\d*.cfml")
@@ -37,9 +34,9 @@ public class Goods {
     @ExtractBy("//span[@id='span_ShowPara']/table/tbody/tr[1]/td[1]/text()")
     private String handle;
     //发布时间
-    @Formatter("yyyy/MM/dd HH:mm:ss")
+    @Formatter("yyyy/M/d H:m:s")
     @ExtractBy("//span[@id='span_UpdateTime']/regex('\\d+/\\d+/\\d+\\s\\d+:\\d+:\\d+')")
-    private Date createTime;
+    private LocalDateTime createTime;
     //所在地
     @ExtractBy("//span[@id='span_area']/text()")
     private String location;
