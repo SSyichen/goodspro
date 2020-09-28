@@ -20,4 +20,9 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> findAll() {
         return goodsMapper.selectGoodsAll();
     }
+
+    @Override
+    public void insert(Goods goods) {
+        goodsMapper.insert(goods);
+    }
 }

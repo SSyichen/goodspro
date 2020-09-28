@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luka.goodspro.mapper.BrankMapper">
+    <select id="getCategoryIDByName" resultType="com.luka.goodspro.bean.Category">
+        select * from t_category where name = #{categoryName}
+    </select>
+    <insert id="insert">
+        -- insert into
+    </insert>
+</mapper>

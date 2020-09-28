@@ -14,4 +14,7 @@ public interface GoodsService {
      * @return
      */
     List<Goods> findAll();
+
+    void insert (Goods goods);
+
 }

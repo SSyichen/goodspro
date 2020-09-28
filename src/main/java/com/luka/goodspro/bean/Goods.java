@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @TargetUrl("http://www.bzjw.com/supply/SupplyDetail_\\d*_\\d*.cfml")
 @HelpUrl("233")
 public class Goods {
-    private Integer id;
+    private Long id;
     //标题
     @ExtractBy("//h2[@id='span_big_title']/text()")
     private String title;
@@ -20,7 +20,7 @@ public class Goods {
     @ExtractBy("//span[@id='span_made']/text()")
     private String specifications;
     //类型id
-    private Integer categoryId;
+    private Long categoryId;
     //分类名称
     @ExtractBy("//span[@id='span_IndustryType']/text()")
     private String categoryName;
@@ -50,7 +50,7 @@ public class Goods {
     @ExtractBy("//span[@id='span_ShowPara']/table/tbody/tr[1]/td[1]/text()")
     private String threadType;
     //品牌
-    private Integer brandId;
+    private Long brandId;
     //品牌名称
     @ExtractBy("//span[@id='span_ShowPara']/table/tbody/tr[1]/td[1]/text()")
     private String brandName;
@@ -64,7 +64,7 @@ public class Goods {
     @ExtractBy("//div[@class='txt']/text()")
     private String content;
     //供应商id
-    private Integer supplierId;
+    private Long supplierId;
 
     @ExtractBy("//div[@class='company_da']/div/h4/a/span/text()")
     private String splname;
