@@ -40,22 +40,7 @@ public class GoodsRepoPageProcessor implements PageProcessor {
         } catch (Exception e) {
             LOG.error("bean封装时发生异常...", e);
         }
-        //类别
-        boolean categoryFlag = Constants.categoryMap.containsKey(goods.getCategoryName());
-        if (!categoryFlag){
-            Long categoryId = categoryService.getCategoryIDByName(goods.getCategoryName());
-            if (categoryId != null){
-                Constants.categoryMap.put(goods.getCategoryName(),goodsId);
-                goods.setCategoryId(categoryId);
-            }else{
-                Category category = Category.builder().name(goods.getCategoryName()).build();
-                categoryService.insert(category);
-                goods.setCategoryId(category.getId());
-                Constants.categoryMap.put(category.getName(),category.getId());
-            }
-        }else{
-            goods.setCategoryId(Constants.categoryMap.get(goods.getCategoryName()));
-        }
+        Long categoryID = categoryService.getCategoryIDByName(goods.getCategoryName());
 
 
         //品牌 + 供应商信息
