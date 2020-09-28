@@ -7,7 +7,6 @@ import com.luka.goodspro.constant.Constants;
 import com.luka.goodspro.service.BrankService;
 import com.luka.goodspro.service.CategoryService;
 import com.luka.goodspro.service.GoodsService;
-import com.luka.goodspro.service.SupplierService;
 import com.luka.goodspro.util.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +29,6 @@ public class GoodsRepoPageProcessor implements PageProcessor {
     private CategoryService categoryService;
     @Autowired
     private BrankService brankService;
-    @Autowired
-    private SupplierService supplierService;
 
     @Override
     public void process(Page page) {
